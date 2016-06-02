@@ -2,10 +2,23 @@
  * Created by Admin on 26/05/2016.
  */
 (function () {
+
+    $(href^='Quick Reports').parent().addClass(".activeTab");
+    debugger;
+    var specificTab = $(".content").find("a").click(function (){
+        specificTab = event.target.innerText;
+        });
+
+
     //create locale storage object
-    var localStorage = {
+    var localStorageObj = {
 
     };
+
+    localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
+    console.log(localStorageObj);
+
+
 
     $("#showForm").parent().click(function(){
        if($("#showForm").hasClass("animation")) {
@@ -28,9 +41,9 @@
 
     //when clicking the submit button:
     $("#submitBtn").click(function(){
-        var tabName = $(this).parent().parent().parent().attr("id")
-        localStorage["tabName"] = {};
-
+        var tabName = $(this).parent().parent().parent().attr("id");
+        localStorageObj["specificTab"] = {};
+debugger;
         // create two arrays, 1. name fields 2. url fields,
         // both name and url field in the same pair has the same index in their array.
         var nameArr = $(".form").find(".name").toArray();
@@ -50,8 +63,8 @@
                 var thisNameField = nameArr[i],
                     thisUrlField = urlArr[i],
                 //name + url fields value
-                    nameText = $(nameArr[i]).val(),
-                    urlText = $(urlArr[i]).val();
+                    nameText = $(thisNameField).val(),
+                    urlText = $(thisUrlField).val();
 
                 function testUrl() {
                     //check if ur is valid and return answer
@@ -60,10 +73,10 @@
                         return re.test(urlText);
                     }
 
-                    //if valid add name and URL values to localeStorage object + remove red border
+                    //if valid, add name and URL values to localeStorage object, remove red border
                     if (validUrl() === true) {
-                        localStorage["tabName"]["nameField" +"#" +[i]] = nameText;
-                        localStorage["tabName"]["urlField" +"#" +[i]] = urlText;
+                        localStorageObj["tabName"]["nameField" +"#" +[i]] = ["nameText"];
+                        localStorageObj["tabName"]["urlField" +"#" +[i]] = ["urlText"];
                         $(thisUrlField).removeClass("redBorder");
                     }
 
@@ -110,11 +123,13 @@
                 $(".bubble").css("left", position.left + 4);
                 $(".bubble").show();
             }
+
         }
         // on submit or blur of one of fields check form
         checkForm();
         $(".input").on("blur", checkForm);
-        console.log(localStorage);
+        localStorage.setItem('localStorageObj', JSON.stringify(localStorageObj));
+
 
 
     });
