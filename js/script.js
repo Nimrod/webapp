@@ -3,11 +3,11 @@
  */
 (function () {
 
-    $(href^='Quick Reports').parent().addClass(".activeTab");
-    debugger;
-    var specificTab = $(".content").find("a").click(function (){
-        specificTab = event.target.innerText;
-        });
+
+
+
+    var specificTab,
+        allTabs = $(".content").find("a");
 
 
     //create locale storage object
@@ -18,6 +18,15 @@
     localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
     console.log(localStorageObj);
 
+
+    function colorTab (){
+        event.preventDefault();
+            allTabs.removeAttr("style").parent().removeAttr("style");
+            debugger;
+            specificTab = event.target.innerText || 'Quick Reports';
+            $("a:contains('" + specificTab + "')").css("color", "#646464").parent().css("background-color", "#EBEBEB");
+        }
+    allTabs.on("click", colorTab);
 
 
     $("#showForm").parent().click(function(){
@@ -133,4 +142,5 @@ debugger;
 
 
     });
+$(document).ready(colorTab);
 })();
