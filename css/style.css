@@ -158,8 +158,11 @@ section article:last-of-type .title{
     margin-right:0;
 }
 
+ul.content > li > a {
 
-ul.content > li{
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
     display: inline-block;
     float: left;
     min-width: 22%;
@@ -170,14 +173,8 @@ ul.content > li{
     margin-top: 25px;
 }
 
-ul.content > li:last-of-type {
+ul.content > li:last-of-type > a {
     margin-right: 0;
-}
-
-ul.content > li > a {
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
 }
 
 ul.content > li > a:hover {
@@ -196,7 +193,10 @@ ul.content > li:target{
     padding: 30px;
     background: #EBEBEB;
 }
-
+/*ul.content > li.activeTab {*/
+    /*background: #EBEBEB;*/
+    /*color: #646464;*/
+/*}*/
 
 /*QUICK REPORTS TAB*/
 
@@ -326,9 +326,7 @@ ul.content > li:target{
     /*display: none;*/
 }
 
-.item{
-    display: block;
-}
+
 
 .form_fields {
 
@@ -478,10 +476,7 @@ ul.content > li:target{
 .Public_Reports:target {
     display: block;
 }
-.activeTab {
-    background: #EBEBEB;
-    color: #646464;
-}
+
 /*footer */
 
 footer {

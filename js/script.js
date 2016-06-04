@@ -14,17 +14,19 @@
     var localStorageObj = {
 
     };
+    //
+    //localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
 
-    localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
-    console.log(localStorageObj);
 
 
     function colorTab (){
         event.preventDefault();
-            allTabs.removeAttr("style").parent().removeAttr("style");
-            debugger;
+            allTabs.removeAttr("style").removeAttr("style");
+            //debugger;
             specificTab = event.target.innerText || 'Quick Reports';
-            $("a:contains('" + specificTab + "')").css("color", "#646464").parent().css("background-color", "#EBEBEB");
+            console.log(specificTab);
+            $("a:contains('" + specificTab + "')").css("color", "#646464").css("background-color", "#EBEBEB");
+            $("a:contains('" + specificTab + "')").addClass("display-block");
         }
     allTabs.on("click", colorTab);
 
@@ -32,7 +34,7 @@
     $("#showForm").parent().click(function(){
        if($("#showForm").hasClass("animation")) {
                 $("#showForm").removeClass("animation");
-                //debugger;
+
             }
 
        if ($(".form").hasClass("display-block")){
@@ -50,9 +52,9 @@
 
     //when clicking the submit button:
     $("#submitBtn").click(function(){
-        var tabName = $(this).parent().parent().parent().attr("id");
-        localStorageObj["specificTab"] = {};
-debugger;
+
+        localStorageObj[specificTab] = {};
+
         // create two arrays, 1. name fields 2. url fields,
         // both name and url field in the same pair has the same index in their array.
         var nameArr = $(".form").find(".name").toArray();
@@ -75,6 +77,7 @@ debugger;
                     nameText = $(thisNameField).val(),
                     urlText = $(thisUrlField).val();
 
+
                 function testUrl() {
                     //check if ur is valid and return answer
                     function validUrl() {
@@ -84,9 +87,10 @@ debugger;
 
                     //if valid, add name and URL values to localeStorage object, remove red border
                     if (validUrl() === true) {
-                        localStorageObj["tabName"]["nameField" +"#" +[i]] = ["nameText"];
-                        localStorageObj["tabName"]["urlField" +"#" +[i]] = ["urlText"];
+                        localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
+                        localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
                         $(thisUrlField).removeClass("redBorder");
+                        console.log(localStorageObj);
                     }
 
                     //if not valid add red border, push field into wrongUrl array, change bubbleTest to true.
