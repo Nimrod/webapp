@@ -185,8 +185,8 @@ ul.content > li > a:hover {
 ul.content > li:target{
     color:  #333333;
     background: #EBEBEB;
-
 }
+
 .in-use {
     width: 100%;
     height: 800px;
@@ -201,7 +201,7 @@ ul.content > li:target{
 /*QUICK REPORTS TAB*/
 
 .Quick_Reports {
-    display: none;
+    /*display: none;*/
     width: 100%;
     height: 25%;
     position: relative;
@@ -301,9 +301,9 @@ ul.content > li:target{
 
 
 
-.Quick_Reports:target {
+/*.Quick_Reports:target {
     display: block;
-}
+}*/
 
 .iframe{
     position: absolute;
@@ -438,6 +438,9 @@ ul.content > li:target{
     border-radius: 4px;
 }
 
+.display-none {
+    display: none;
+}
 
 .display-block {
     display: block;
@@ -445,37 +448,38 @@ ul.content > li:target{
 /*MY FOLDERS TAB*/
 
 .My_Folders {
-    display: none;
+    /*display: none;*/
     width: 100%;
     height: 25%;
     background-color: pink;
 }
-.My_Folders:target {
+/*.My_Folders:target {
     display: block;
-}
+}*/
 
 /*MY TEAM FOLDERS TAB*/
 
 .My_Team_Folder {
-    display: none;
+    /*display: none;*/
     width: 100%;
     height: 25%;
     background-color: yellow;
 }
-.My_Team_Folder:target {
+/*.My_Team_Folder:target {
     display: block;
-}
+}*/
 /*PUBLIC REPORTS TAB*/
 
 .Public_Reports {
-    display: none;
+    /*display: none;*/
     width: 100%;
     height: 25%;
     background-color: green;
 }
+/*
 .Public_Reports:target {
     display: block;
-}
+}*/
 
 /*footer */
 

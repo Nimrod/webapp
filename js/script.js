@@ -11,23 +11,42 @@
 
 
     //create locale storage object
-    var localStorageObj = {
-
-    };
+    var localStorageObj = {};
     //
     //localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
 
 
 
     function colorTab (){
+        var sections =  $(".in-use").children("section");
+        var myArr = [];
+        $(sections).each(function(){
+           myArr.push($(this).attr("id")) ;
+        });
+
+        console.log(myArr);
         event.preventDefault();
-            allTabs.removeAttr("style").removeAttr("style");
-            //debugger;
-            specificTab = event.target.innerText || 'Quick Reports';
-            console.log(specificTab);
-            $("a:contains('" + specificTab + "')").css("color", "#646464").css("background-color", "#EBEBEB");
-            $("a:contains('" + specificTab + "')").addClass("display-block");
+        allTabs.removeAttr("style");
+
+        console.log(sections)
+
+        specificTab = $(event.target).attr("href") || '#Quick_Reports';
+        console.log(specificTab);
+        for (var i=0; i<myArr.length; i++){
+
+            if("#" + myArr[i]===specificTab){
+                debugger;
+                $("a").filter(href=specificTab).css("color", "#646464").css("background-color", "#EBEBEB");
+                $( specificTab).removeClass("display-none");
+                $(specificTab).addClass("display-block");
+            }
+            else {
+                $("#" + myArr[i]).removeClass("display-block");
+                $("#" + myArr[i]).addClass("display-none");
+            }
         }
+
+    }
     allTabs.on("click", colorTab);
 
 
