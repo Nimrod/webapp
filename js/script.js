@@ -36,7 +36,7 @@
 
             if("#" + myArr[i]===specificTab){
                 debugger;
-                $("a").filter(href=specificTab).css("color", "#646464").css("background-color", "#EBEBEB");
+                $("a").filter('[href="' + specificTab + '"]').css("color", "#646464").css("background-color", "#EBEBEB");
                 $( specificTab).removeClass("display-none");
                 $(specificTab).addClass("display-block");
             }
