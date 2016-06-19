@@ -461,9 +461,10 @@ ul.content > li:target{
 
 .My_Team_Folder {
     /*display: none;*/
+    position: relative;
+    z-index: 11;
+    right: 0px;
     width: 100%;
-    height: 25%;
-    background-color: yellow;
 }
 /*.My_Team_Folder:target {
     display: block;

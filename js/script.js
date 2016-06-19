@@ -35,7 +35,6 @@
         for (var i=0; i<myArr.length; i++){
 
             if("#" + myArr[i]===specificTab){
-                debugger;
                 $("a").filter('[href="' + specificTab + '"]').css("color", "#646464").css("background-color", "#EBEBEB");
                 $( specificTab).removeClass("display-none");
                 $(specificTab).addClass("display-block");
@@ -106,6 +105,7 @@
 
                     //if valid, add name and URL values to localeStorage object, remove red border
                     if (validUrl() === true) {
+                        debugger;
                         localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
                         localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
                         $(thisUrlField).removeClass("redBorder");
