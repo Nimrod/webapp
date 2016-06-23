@@ -207,7 +207,7 @@ ul.content > li:target{
     position: relative;
 }
 
-.menu_quick_reports ul :last-child:active{
+.small_menu ul :last-child:active{
     background: #FEFEFE;
 }
 

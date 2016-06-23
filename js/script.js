@@ -11,7 +11,20 @@
 
 
     //create locale storage object
-    var localStorageObj = {};
+    localStorage.removeItem('localStorageObj');
+    var localStorageObj = { };
+    function checkLocalStorage () {
+        var isLocalStorageEmpty = localStorage.getItem('localStorageObj');
+        if ( isLocalStorageEmpty === null){
+            var localStorageArr = $(".small_menu").parent().map(function(){return this.id}).toArray();
+            localStorageArr.forEach(function(newObjName){
+                localStorageObj[newObjName] ={};
+            });
+        }
+    }
+    checkLocalStorage();
+        console.log(localStorageObj);
+
     //
     //localStorageObj = JSON.parse(localStorage.getItem('localStorageObj'));
 
@@ -24,11 +37,8 @@
            myArr.push($(this).attr("id")) ;
         });
 
-        console.log(myArr);
         event.preventDefault();
         allTabs.removeAttr("style");
-
-        console.log(sections)
 
         specificTab = $(event.target).attr("href") || '#Quick_Reports';
         console.log(specificTab);
@@ -106,10 +116,14 @@
                     //if valid, add name and URL values to localeStorage object, remove red border
                     if (validUrl() === true) {
                         debugger;
-                        localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
-                        localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
+
                         $(thisUrlField).removeClass("redBorder");
-                        console.log(localStorageObj);
+                        //if (){
+                        //    localStorageObj[specificTab]= {};
+                        //    localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
+                        //    localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
+                        //}
+
                     }
 
                     //if not valid add red border, push field into wrongUrl array, change bubbleTest to true.
@@ -158,8 +172,12 @@
 
         }
         // on submit or blur of one of fields check form
-        checkForm();
+
         $(".input").on("blur", checkForm);
+        checkForm();
+
+
+
         localStorage.setItem('localStorageObj', JSON.stringify(localStorageObj));
 
 
