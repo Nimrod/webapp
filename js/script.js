@@ -79,7 +79,7 @@
 
 
     //when clicking the submit button:
-    $("#submitBtn").click(function(){
+    $("#submitBtn").click(function(e){
 
         localStorageObj[specificTab] = {};
 
@@ -90,7 +90,7 @@
         //var siteUrl;
 
         // loop through name array
-        function checkForm() {
+        function checkForm(e) {
             //create an empty array of the fields with wrong url
             var wrongUrl = [];
             //create var test to check if all url fields ok, take off text bubble
@@ -116,13 +116,13 @@
                     //if valid, add name and URL values to localeStorage object, remove red border
                     if (validUrl() === true) {
                         debugger;
-
                         $(thisUrlField).removeClass("redBorder");
-                        //if (){
-                        //    localStorageObj[specificTab]= {};
-                        //    localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
-                        //    localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
-                        //}
+                        if (e.target === $(".submitBtn")){
+                            console.log ("Hi");
+                            //localStorageObj[specificTab]= {};
+                            //localStorageObj[specificTab]["nameField" +"#" +[i]] = nameText;
+                            //localStorageObj[specificTab]["urlField" +"#" +[i]] = urlText;
+                        }
 
                     }
 
@@ -174,13 +174,9 @@
         // on submit or blur of one of fields check form
 
         $(".input").on("blur", checkForm);
-        checkForm();
-
-
+        checkForm(e);
 
         localStorage.setItem('localStorageObj', JSON.stringify(localStorageObj));
-
-
 
     });
 $(document).ready(colorTab);
